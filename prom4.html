@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>INV CARD</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+      font-family: "DICIS";
+      src: url(DICIS.ttf);
+}
+
+      body {
+        font-family : 'DICIS', serif;
+        background: linear-gradient(to right, #fdeff9, #ecf0f1);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .letter {
+        background: #fff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 600px;
+        text-align: center;
+        transition: all 0.5s ease;
+        position: relative;
+      }
+
+      h1 {
+        font-family: "Great Vibes", cursive;
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #d63384;
+      }
+
+      .message {
+        font-size: x-large;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+
+      .signature {
+        font-family: 'DICIS', serif;
+        font-size: 28px;
+        color: #444;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #d63384;
+        border-radius: 8px;
+        margin-top: 20px;
+        outline: none;
+        width: 80%;
+        transition: 0.3s ease;
+      }
+
+      .secret {
+        margin-top: 30px;
+        font-weight: 500;
+        display: none;
+        color: #e91e63;
+        font-size: 20px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .blushing {
+        animation: blush 1s infinite alternate;
+      }
+
+      .popup-heart {
+        position: absolute;
+        font-size: 24px;
+        animation: floatUp 2s ease-out forwards;
+      }
+
+      @keyframes blush {
+        from {
+          background-color: #fff;
+        }
+        to {
+          background-color: #ffe6f0;
+        }
+      }
+
+      @keyframes floatUp {
+        0% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-100px);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .confession {
+        display: none;
+      }
+
+      .confession.active,
+      .main.active {
+        display: block;
+      }
+
+      .main.inactive {
+        display: none;
+      }
+         .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      z-index: 9999;
+      animation: fadeOut 2s ease forwards; /* jalan sekali */
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+    h1{
+      font-family: 'DICIS', serif;
+    }
+
+    </style>
+  </head>
+  <body>
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+    <div class="overlay"></div>
+    <div class="letter main active" id="mainPage">
+      <div class="hearts">❤️ 💖 💕</div>
+      <h1>Thank you for your answer!</h1>
+      <div class="message">
+        anjay asowkwokowkok terima donk cantiq 
+      </div>
+
+      <div class="signature">
+        Freddy<br />
+        
+      </div>
+
+      <!-- <input
+        type="text"
+        id="nameInput"
+        placeholder="Type your name here..."
+        oninput="checkName()"
+      />
+
+      <div id="secretMessage" class="secret"></div>
+    </div>
+
+    <div class="letter confession" id="confessionPage">
+      <h1 id="confessionTitle">Dear You,</h1>
+      <div class="message" id="confessionBody">
+        Just wanted you to know… You're amazing, and I like you so much. 😳 You
+        make my days brighter without even trying.
+        <br /><br />
+        I hope this message brings a smile to your face. 💕
+      </div>
+
+      <div class="signature" style="margin-top: 40px">
+        Always yours,<br />
+        Someone who truly cares 💌
+      </div>
+    </div>
+
+    <script>
+      function checkName() {
+        const input = document.getElementById("nameInput").value.trim();
+        const secret = document.getElementById("secretMessage");
+        const mainPage = document.getElementById("mainPage");
+        const confessionPage = document.getElementById("confessionPage");
+        const music = document.getElementById("bgMusic");
+
+        if (input.length > 0) {
+          secret.innerHTML = `You found my secret message, ${input} 💘<br>I like you... a lot. More than you know. 💞`;
+          secret.style.display = "block";
+
+          mainPage.classList.add("blushing");
+          music.play();
+          showFloatingHeart();
+
+          setTimeout(() => {
+            mainPage.classList.remove("active");
+            mainPage.classList.add("inactive");
+            confessionPage.classList.add("active");
+
+            // personalize the confession
+            document.getElementById(
+              "confessionTitle"
+            ).innerText = `Dear ${input},`;
+            document.getElementById("confessionBody").innerHTML = `
+          I've been wanting to say this for a while now...  
+          ${input}, I really, really like you. 😳  
+          You're kind, smart, and just being around you makes me happy.  
+          <br><br>
+          Every moment feels special, and I hope maybe... you feel the same too?
+        `;
+          }, 3000);
+        } else {
+          secret.style.display = "none";
+          mainPage.classList.remove("blushing");
+          music.pause();
+          music.currentTime = 0;
+        }
+      }
+
+      function showFloatingHeart() {
+        const heart = document.createElement("div");
+        heart.className = "popup-heart";
+        heart.textContent = "💘";
+        heart.style.left = Math.random() * 80 + 10 + "%";
+        heart.style.top = "80%";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>
+    </div>
+  </body>
+</html>

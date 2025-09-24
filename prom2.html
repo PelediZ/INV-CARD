@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INV CARD</title>
+    <link rel="stylesheet" href="prom2.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+
+    <div class="night"></div>
+    <div class="container">
+      <h1>For Kallista Anjelica...</h1>
+    </div>
+    <div class="letter_ct">
+      <input type="checkbox" id="check" />
+      <label for="check">
+        <span class="letter main"></span>
+        <div class="note" onclick="nextPage()">
+          <p class="int">Hi, Kall...</p>
+          <p>
+            Please click me again!
+            <br />
+            I made this for u!
+          </p>
+          <p class="sign">From<br />Freddy</p>
+        </div>
+        <span class="front"></span>
+        <span class="letter flap-bg"></span>
+        <span class="letter flap"></span>
+        <span class="heart"></span>
+      </label>
+    </div>
+    <div class="txt">
+      <h3>click on the letter!</h3>
+    </div>
+    <script>
+      function nextPage() {
+        const overlay = document.createElement("div");
+        overlay.className = "page-transition";
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener("animationend", () => {
+          window.location.href = "prom3.html";
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+:root {
+  --dark-color: #0a0a0a; /* or any dark shade */
+}
+
+@font-face {
+  font-family: "DICIS";
+  src: url(DICIS.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "DICIS", serif;
+  color: rgb(215, 119, 193);
+  text-shadow: 0 0 6px rgb(241, 228, 215);
+}
+
+.night {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0; /* cover the whole viewport */
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, #fdeff9, #ecf0f1);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #121212;
+}
+
+.container {
+  font-size: xx-large;
+  grid-row: 2/3;
+  justify-self: center;
+  align-self: center;
+  grid-column: 5/9;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #fff; /* cursor effect */
+  width: 0;
+  animation: typing 1s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+/* Animasi mengetik */
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+/* Animasi kursor kedip */
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+
+.letter_ct {
+  margin-bottom: 20%;
+  width: 400px;
+  height: 300px;
+  grid-row: 2/7;
+  grid-column: 5/9;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.txt {
+  margin-top: 0%;
+  grid-row: 10/11;
+  grid-column: 6/9;
+  text-align: center;
+  font-size: xx-large;
+  animation: typing 1s steps(40, end) forwards, blink 0.75s step-end infinite;
+}
+
+label {
+  position: absolute;
+}
+
+.letter {
+  grid: inherit;
+  width: 400px;
+  height: 300px;
+  background-color: pink;
+  border: 4px solid palevioletred;
+  display: grid;
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  border-radius: 0 0 7px 7px;
+}
+
+.main {
+  box-shadow: 0 10px 30px purple;
+}
+
+.note {
+  z-index: 1;
+  justify-content: center;
+  position: absolute;
+  width: 390px;
+  height: 270px;
+  margin: 10px 9px;
+  background-color: whitesmoke;
+  p {
+    margin: 15px 30px;
+    font-size: x-large;
+    color: purple;
+  }
+  .int {
+    text-align: left;
+  }
+  .sign {
+    text-align: right;
+  }
+
+  transform: translateY(0px);
+  transition-duration: 0.3s;
+}
+
+.front {
+  position: absolute;
+  z-index: 2;
+  width: 401px;
+  height: 300px;
+  background-color: rgb(252, 157, 188);
+  margin: 4px;
+  clip-path: polygon(50% 45%, 100% 0, 100% 100%, 0 100%, 0 0);
+}
+
+.flap-bg {
+  z-index: 2;
+  background-color: palevioletred;
+  margin-top: 4px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 1%, 50% 56%, 0 1%);
+
+  transform: rotateX(0deg);
+  transition-duration: 0.3s ease-in-out;
+}
+
+.flap {
+  z-index: 2;
+  margin-left: 3px;
+  background-color: rgb(255, 163, 179);
+  border: unset;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+
+  transform: rotateX(0deg);
+  transition-duration: 0.3s ease-in-out;
+}
+
+/* .heart {
+  position: absolute;
+  z-index: 4;
+  cursor: pointer;
+  height: 170px;
+  width: 200px;
+
+  scale: 30%;
+  margin: 70px 102px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 160px;
+  background-color: rgb(178, 34, 106);
+}
+
+.heart::before {
+  left: 100px;
+
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+
+  border-radius: 50px 50px 0 0;
+}
+
+.heart::after {
+  right: 100px;
+
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  -webkit-border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
+} */
+
+/* checkbox */
+#check {
+  display: none;
+}
+
+input:not(:checked) ~ label .flap {
+  transform-origin: top;
+  transform: rotateX(0deg);
+  transition: 0.3s ease-in-out;
+  transition-delay: 0.3s;
+
+  -webkit-transition-delay: 0.3s;
+  -webkit-transform-origin: top;
+  -webkit-transform: rotateX(0deg);
+}
+
+input:not(:checked) ~ label .flap-bg {
+  transform-origin: top;
+  transform: rotateX(0deg);
+  transition: 0.3s ease-in-out;
+  transition-delay: 0.3s;
+
+  -webkit-transition-delay: 0.3s;
+  -webkit-transform-origin: top;
+  -webkit-transform: rotateX(0deg);
+}
+
+input:not(:checked) ~ label .heart {
+  transform-origin: center 70%;
+  transform: translateY(0px) rotate(0deg);
+  transition-delay: 0.6s;
+
+  -webkit-transition-delay: 0.6s;
+  -webkit-transform-origin: center 70%;
+  -webkit-transform: translateX(0px) rotate(0deg);
+}
+
+input:checked ~ label .flap {
+  transform: rotateX(-180deg) translateY(-4px);
+  transition: 0.3s ease-in-out;
+  transition-delay: 0.3s;
+
+  -webkit-transform-origin: top;
+  -webkit-transform: rotateX(-180deg) translateY(-4px);
+  -webkit-transition-delay: transform 0.3s ease;
+}
+
+input:checked ~ label .flap-bg {
+  transform: rotateX(-180deg);
+  transition: 0.3s ease-in-out;
+  transition-delay: 0.3s;
+
+  -webkit-transform-origin: top;
+  -webkit-transform: rotateX(-180deg);
+  -webkit-transition-delay: transform 0.3s ease;
+  -webkit-transition-delay: 0.3s;
+}
+
+input:checked ~ label .flap,
+input:checked ~ label .flap-bg {
+  transform-origin: top;
+  transition: transform 0.3s 0.4s, z-index 0s 0.6s;
+
+  z-index: 0;
+}
+
+input:checked ~ label .heart {
+  transform-origin: center 70%;
+  transform: translateX(-60px) rotate(-70deg);
+  transition-duration: 0.3s;
+
+  -webkit-transform-origin: center 70%;
+  -webkit-transform: translateX(-60px) rotate(-70deg);
+  -webkit-transition-duration: 0.3s;
+}
+
+input:checked ~ label .note {
+  transform: translateY(-170px);
+  transition-delay: 0.8s;
+}
+
+.page-transition {
+  position: fixed; /* cover the whole viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+  filter: blur(20px); /* start blurry */
+  pointer-events: none; /* prevent blocking clicks before animation */
+  z-index: 9999;
+  animation: fadeInSolid 1s forwards;
+}
+
+@keyframes fadeInSolid {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  animation: fadeOut 2s ease forwards; /* jalan sekali */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

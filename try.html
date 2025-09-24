@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yes or No Button</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #fdf0f3;
+        font-family: Arial, sans-serif;
+        overflow: hidden; /* biar tombol gak keluar layar */
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 40px;
+        font-size: 28px;
+        color: #333;
+      }
+
+      button {
+        padding: 14px 28px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      #yesBtn {
+        background: #4caf50;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-150%, -50%);
+      }
+
+      #noBtn {
+        background: #f44336;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mi</h1>
+    </div>
+
+    <script>
+      const noBtn = document.getElementById("noBtn");
+      const container = document.querySelector(".container");
+      let count = 0;
+
+      noBtn.addEventListener("click", () => {
+        if (count >= 3) return;
+        const containerRect = container.getBoundingClientRect();
+        const btnRect = noBtn.getBoundingClientRect();
+
+        let newTop = Math.random() * (containerRect.height - btnRect.height);
+        let newLeft = Math.random() * (containerRect.width - btnRect.width);
+
+        noBtn.style.top = `${newTop}px`;
+        noBtn.style.left = `${newLeft}px`;
+        noBtn.style.transform = "translate(0,0)"; // reset biar posisi sesuai top/left baru
+        count++;
+      });
+    </script>
+  </body>
+</html>
